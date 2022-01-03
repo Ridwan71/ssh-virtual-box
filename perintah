@@ -29,3 +29,6 @@ Guest Port = 22
 
 --Restart Network--
 systemcyl restart NetworkManager.service
+
+--Connect Putty--
+ip = 127.0.0.1
