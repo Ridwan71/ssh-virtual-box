@@ -1,0 +1,31 @@
+--Install setting ssh--
+dnf install openssh-server
+systemctl start sshd
+systemctl enable sshd
+systemctl status sshd
+
+--Open firewall--
+firewall-cmd --zone=public --permanent --add-service=ssh
+ssh root@127.0.0.1 --> yes
+
+--cek dan setting ip enp0s3--
+ip addr
+
+--automatic ip enp0s3--
+cd /etc/sysconfig/network-scripts/
+sudo vim ifcfg-enp0s3
+    - ganti BOOTPROTO = dhcp
+    - ganti ONBOOT = yes
+ip addr
+
+--Setting Machine Network--
+ke Machine -> Setting -> Network -> Adapter 1 - Advanced - Port Forwarding -> add
+Name = Bebas
+Protocol = TCP
+Host Ip = 127.0.0.1
+Host Port = 22
+Guest IP = 10.0.2.15
+Guest Port = 22
+
+--Restart Network--
+systemcyl restart NetworkManager.service
